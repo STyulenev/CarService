@@ -8,7 +8,7 @@ public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(name = "name", length = 30)
     private String name;
@@ -19,20 +19,20 @@ public class Customer {
     @Column(name = "role", length = 30)
     private String role;
 
-    public Customer() {}
+    /*public Customer() {}
 
-    public Customer(Integer id, String name, String password, String role) {
+    public Customer(Long id, String name, String password, String role) {
         this.id = id;
         this.name = name;
         this.password = password;
         this.role = role;
-    }
+    }*/
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

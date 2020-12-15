@@ -12,7 +12,7 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
-    public Customer findById(Integer id) {
+    public Customer findById(Long id) {
         return customerRepository.findById(id).orElseThrow(RuntimeException::new);
     }
 }

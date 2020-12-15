@@ -5,9 +5,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 
-public interface CustomerRepository extends CrudRepository<Customer, Integer> {
+public interface CustomerRepository extends CrudRepository<Customer, Long> {
     Customer findByName(String name);
 
     @Query("select d from Customer d where d.id = :id")
-    Customer findByIdCustom(Integer id);
+    Customer findByIdCustom(Long id);
 }
