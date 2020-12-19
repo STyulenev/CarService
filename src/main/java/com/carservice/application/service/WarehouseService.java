@@ -1,5 +1,6 @@
 package com.carservice.application.service;
 
+import com.carservice.application.data.entity.Detail;
 import com.carservice.application.data.entity.Office;
 import com.carservice.application.data.entity.Warehouse;
 import com.carservice.application.data.repository.WarehouseRepository;
@@ -18,4 +19,5 @@ public class WarehouseService {
     public List<Warehouse> findAll() {
         return warehouseRepository.findAll();
     }
+
 }

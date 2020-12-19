@@ -1,25 +1,30 @@
 package com.carservice.application.data.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "Warehouse", schema = "public")
+//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "details"})
 public class Warehouse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne()
-    @JoinColumn(name = "detailId")
-    private Detail ownerDetail;
-
-    @ManyToOne()
-    @JoinColumn(name = "officeId")
-    private Office ownerOffice;
+    @Column(name = "office_id")
+    private Integer office_id;
 
     @Column(name = "quantity")
     private Integer quantity;
+
+    @ManyToMany
+    @JoinTable(
+            name = "Detail_Warehouse",
+            joinColumns = @JoinColumn(name = "warehouse_id"),
+            inverseJoinColumns = @JoinColumn(name = "detail_id"))
+    private List<Detail> details;
 
     public Long getId() {
         return id;
@@ -29,20 +34,12 @@ public class Warehouse {
         this.id = id;
     }
 
-    public Detail getOwnerDetail() {
-        return ownerDetail;
+    public Integer getOffice_id() {
+        return office_id;
     }
 
-    public void setOwnerDetail(Detail ownerDetail) {
-        this.ownerDetail = ownerDetail;
-    }
-
-    public Office getOwnerOffice() {
-        return ownerOffice;
-    }
-
-    public void setOwnerOffice(Office ownerOffice) {
-        this.ownerOffice = ownerOffice;
+    public void setOffice_id(Integer office_id) {
+        this.office_id = office_id;
     }
 
     public Integer getQuantity() {
@@ -51,5 +48,13 @@ public class Warehouse {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public List<Detail> getDetails() {
+        return details;
+    }
+
+    public void setDetails(List<Detail> details) {
+        this.details = details;
     }
 }

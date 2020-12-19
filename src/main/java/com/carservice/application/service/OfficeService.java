@@ -18,4 +18,8 @@ public class OfficeService {
     public List<Office> findAll() {
         return officeRepository.findAll();
     }
+
+    public Office findByOne(Long id) {
+        return officeRepository.findByOne(id);
+    }
 }

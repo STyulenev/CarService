@@ -16,17 +16,6 @@ public class Office {
     @Column(name = "address", length = 30)
     private String address;
 
-    @OneToMany(mappedBy = "id")
-    private List<Office> offices;
-
-    /*public Office() {}
-
-    public Office(Long id, String city, String address) {
-        this.id = id;
-        this.city = city;
-        this.address = address;
-    }*/
-
     public Long getId() {
         return id;
     }
@@ -49,13 +38,5 @@ public class Office {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public List<Office> getOffices() {
-        return offices;
-    }
-
-    public void setOffices(List<Office> offices) {
-        this.offices = offices;
     }
 }

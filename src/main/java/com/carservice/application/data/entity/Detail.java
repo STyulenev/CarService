@@ -1,10 +1,15 @@
 package com.carservice.application.data.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "Detail", schema = "public")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "warehouses"})
 public class Detail {
 
     @Id
@@ -17,8 +22,8 @@ public class Detail {
     @Column(name = "price")
     private Integer price;
 
-    @OneToMany(mappedBy = "id")
-    private List<Detail> details;
+    @ManyToMany(mappedBy = "details")
+    private List<Warehouse> warehouses;
 
     public Long getId() {
         return id;
@@ -44,11 +49,11 @@ public class Detail {
         this.price = price;
     }
 
-    public List<Detail> getDetails() {
-        return details;
+    public List<Warehouse> getWarehouses() {
+        return warehouses;
     }
 
-    public void setDetails(List<Detail> details) {
-        this.details = details;
+    public void setWarehouses(List<Warehouse> warehouses) {
+        this.warehouses = warehouses;
     }
 }

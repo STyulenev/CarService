@@ -48,23 +48,4 @@ public class TestController {
         return list;
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/office")
-    public List<Office> user3() {
-        List<Office> list = new ArrayList<>();
-
-        list = officeService.findAll();
-
-        return list;
-    }
-
-    @RequestMapping(method = RequestMethod.GET, path = "/warehouse")
-    public List<Warehouse> user4() {
-        List<Warehouse> list = new ArrayList<>();
-
-        // достаёт зациклинные значения
-        list = warehouseService.findAll();
-
-        return list;
-    }
-
 }
