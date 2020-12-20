@@ -19,7 +19,20 @@ public class DetailService {
         return detailRepository.findAll();
     }
 
+    public Detail findByName(String name) {
+        return detailRepository.findByName(name);
+    }
+
     public Optional<Detail> findById(Long id) {
         return detailRepository.findById(id);
+    }
+
+    public Detail createOrUpdateDetail(Detail detail) {
+        return detailRepository.save(detail);
+    }
+
+    public void deleteDetailById(Long id) {
+        var detail = findById(id);
+        detailRepository.deleteById(id);
     }
 }

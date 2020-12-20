@@ -3,7 +3,6 @@ package com.carservice.application.data.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "Office", schema = "public")
@@ -18,10 +17,6 @@ public class Office {
 
     @Column(name = "address", length = 30)
     private String address;
-
-    /*@OneToMany
-    @JoinColumn(name = "office_id")
-    private List<Warehouse> warehouses;*/
 
     public Long getId() {
         return id;
@@ -46,12 +41,4 @@ public class Office {
     public void setAddress(String address) {
         this.address = address;
     }
-
-    /*public List<Warehouse> getWarehouses() {
-        return warehouses;
-    }
-
-    public void setWarehouses(List<Warehouse> warehouses) {
-        this.warehouses = warehouses;
-    }*/
 }

@@ -1,12 +1,11 @@
 package com.carservice.application.controllers;
 
 import com.carservice.application.data.entity.Detail;
+import com.carservice.application.data.entity.Office;
 import com.carservice.application.data.entity.Warehouse;
 import com.carservice.application.service.OfficeService;
 import com.carservice.application.service.WarehouseService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,9 +21,30 @@ public class WarehouseController {
         this.officeService = officeService;
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/{city}/{address}")
+    public List<Warehouse> listWarehouseByOffice(@PathVariable String city,
+                                                 @PathVariable String address) {
+        var office = officeService.findByCityAndAddress(city, address);
+        return warehouseService.findByOffice(office.getId());
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/list")
-    public List<Warehouse> list() {
+    public List<Warehouse> listWarehouse() {
         return warehouseService.findAll();
     }
 
+    @RequestMapping(method = RequestMethod.POST, path = "/")
+    public Warehouse createOrUpdateWarehouse(@RequestBody Warehouse warehouse) {
+        return warehouseService.createOrUpdateWarehouse(warehouse);
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, path = "/{id}")
+    public void deleteWarehouse(@PathVariable Long id) {
+        warehouseService.deleteWarehouseById(id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
+    public Warehouse getWarehouse(@PathVariable Long id) {
+        return warehouseService.findById(id);
+    }
 }

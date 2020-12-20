@@ -14,4 +14,6 @@ public interface DetailRepository extends PagingAndSortingRepository<Detail, Lon
 
     @Query("select d from Detail d where d.id = :id")
     Optional<Detail> findById(Long id);
+
+    void deleteById(Detail detail);
 }
