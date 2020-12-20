@@ -10,6 +10,4 @@ import java.util.List;
 
 public interface WarehouseRepository extends PagingAndSortingRepository<Warehouse, Long> {
     List<Warehouse> findAll();
-
-
 }

@@ -17,8 +17,9 @@ CREATE TABLE Office
 CREATE TABLE Warehouse
 (
 	id BIGSERIAL PRIMARY KEY,
-	office_id INTEGER,
-	quantity INTEGER CHECK(quantity >= 0) DEFAULT 0
+	office_id BIGINT,
+	quantity INTEGER CHECK(quantity >= 0) DEFAULT 0,
+	FOREIGN KEY (office_id) REFERENCES Office (id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE Detail_Warehouse

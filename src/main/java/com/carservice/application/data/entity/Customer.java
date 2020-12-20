@@ -19,6 +19,15 @@ public class Customer {
     @Column(name = "role", length = 30)
     private String role;
 
+    public Customer() {}
+
+    public Customer(Long id, String name, String password, String role) {
+        this.id = id;
+        this.name = name;
+        this.password = password;
+        this.role = role;
+    }
+
     public Long getId() {
         return id;
     }
