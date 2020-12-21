@@ -1,8 +1,8 @@
 package com.carservice.application.controllers;
 
 import com.carservice.application.data.entity.Customer;
-import com.carservice.application.data.entity.Detail;
 import com.carservice.application.service.CustomerService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,6 +19,7 @@ public class CustomerController {
     public Customer getCustomer(@PathVariable Long id) {
         return customerService.findById(id);
     }
+
 
     @RequestMapping(method = RequestMethod.POST, path = "/")
     public Customer createOrUpdateCustomer(@RequestBody Customer customer) {

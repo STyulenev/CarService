@@ -10,4 +10,6 @@ public interface CustomerRepository extends CrudRepository<Customer, Long> {
 
     @Query("select d from Customer d where d.id = :id")
     Customer findByIdCustom(Long id);
+
+    Customer findByNameAndPassword(String name, String password);
 }

@@ -33,10 +33,10 @@ CREATE TABLE Detail_Warehouse
 
 CREATE TABLE Customer
 (
-    id BIGSERIAL PRIMARY KEY,
-    name CHARACTER VARYING(30) NOT NULL UNIQUE,
-    password CHARACTER VARYING(255) NOT NULL,
-    role CHARACTER VARYING(30) NOT NULL
+	id BIGSERIAL PRIMARY KEY,
+	name CHARACTER VARYING(30) NOT NULL UNIQUE,
+	password CHARACTER VARYING(255) NOT NULL,
+	role CHARACTER VARYING(30)
 );
 
 INSERT INTO Detail VALUES (default, 'transmission', 100000);
@@ -111,5 +111,6 @@ INSERT INTO Detail_Warehouse VALUES (default, 11, 24);
 INSERT INTO Detail_Warehouse VALUES (default, 12, 25);
 INSERT INTO Detail_Warehouse VALUES (default, 13, 26);
 
-INSERT INTO Customer VALUES (default, 'Alexander', '123456', 'USER');
-INSERT INTO Customer VALUES (default, 'John', 'admin', 'ADMIN');
+INSERT INTO Customer VALUES (default, 'Alexander', '123456', 'ROLE_USER');
+INSERT INTO Customer VALUES (default, 'John', 'admin', 'ROLE_ADMIN');
+

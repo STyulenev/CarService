@@ -1,12 +1,10 @@
 package com.carservice.application.controllers;
 
-import com.carservice.application.data.entity.Detail;
 import com.carservice.application.data.entity.Office;
 import com.carservice.application.service.OfficeService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/carservice/office")
