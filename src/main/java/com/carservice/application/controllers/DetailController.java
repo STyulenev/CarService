@@ -16,27 +16,27 @@ public class DetailController {
         this.detailService = detailService;
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/list")
+    @RequestMapping(method = RequestMethod.GET, path = "/get/list")
     public List<Detail> GetListDetails() {
         return detailService.findAll();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/name/{name}")
+    @RequestMapping(method = RequestMethod.GET, path = "/get/name/{name}")
     public Detail GetNameDetail(@PathVariable String name) {
         return detailService.findByName(name);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
+    @RequestMapping(method = RequestMethod.GET, path = "/get/{id}")
     public Optional<Detail> getDetail(@PathVariable Long id) {
         return detailService.findById(id);
     }
 
-    @RequestMapping(method = RequestMethod.POST, path = "/")
+    @RequestMapping(method = RequestMethod.POST, path = "/update")
     public Detail createOrUpdateDevice(@RequestBody Detail detail) {
         return detailService.createOrUpdateDetail(detail);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, path = "/{id}")
+    @RequestMapping(method = RequestMethod.DELETE, path = "/update/{id}")
     public void deleteDetail(@PathVariable Long id) {
         detailService.deleteDetailById(id);
     }

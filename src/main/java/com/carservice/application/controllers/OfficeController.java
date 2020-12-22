@@ -16,27 +16,27 @@ public class OfficeController {
         this.officeService = officeService;
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/list")
+    @RequestMapping(method = RequestMethod.GET, path = "/get/list")
     public List<Office> listOffices() {
         return officeService.findAll();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/list/{city}")
+    @RequestMapping(method = RequestMethod.GET, path = "/get/list/{city}")
     public List<Office> listOfficesByCity(@PathVariable String city) {
         return officeService.findByCity(city);
     }
 
-    @RequestMapping(method = RequestMethod.POST, path = "/")
+    @RequestMapping(method = RequestMethod.POST, path = "/update/")
     public Office createOrUpdateOffices(@RequestBody Office office) {
         return officeService.createOrUpdateOffice(office);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, path = "/{id}")
+    @RequestMapping(method = RequestMethod.DELETE, path = "/update/{id}")
     public void deleteOffice(@PathVariable Long id) {
         officeService.deleteOfficeById(id);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
+    @RequestMapping(method = RequestMethod.GET, path = "/get/{id}")
     public Office getOffice(@PathVariable Long id) {
         return officeService.findById(id);
     }

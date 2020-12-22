@@ -20,7 +20,6 @@ public class CustomerController {
         return customerService.findById(id);
     }
 
-
     @RequestMapping(method = RequestMethod.POST, path = "/")
     public Customer createOrUpdateCustomer(@RequestBody Customer customer) {
         return customerService.createOrUpdateCustomer(customer);

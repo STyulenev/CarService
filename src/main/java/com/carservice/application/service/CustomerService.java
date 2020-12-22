@@ -2,17 +2,18 @@ package com.carservice.application.service;
 
 import com.carservice.application.data.entity.Customer;
 import com.carservice.application.data.repository.CustomerRepository;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CustomerService {
     private final CustomerRepository customerRepository;
-    //private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
-    public CustomerService(CustomerRepository customerRepository/*, PasswordEncoder passwordEncoder*/) {
+    public CustomerService(CustomerRepository customerRepository, @Lazy PasswordEncoder passwordEncoder) {
         this.customerRepository = customerRepository;
-        //this.passwordEncoder = passwordEncoder;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public Customer findById(Long id) {
@@ -20,11 +21,13 @@ public class CustomerService {
     }
 
     public Customer createOrUpdateCustomer(Customer customer) {
-        //return customerRepository.save(customer);
+        return customerRepository.save(customer);
+    }
 
+    public Customer saveCustomer(Customer customer) {
         customer.setRole("ROLE_USER");
-        //customer.setPassword(passwordEncoder.encode(customer.getPassword()));
-        return customer;
+        customer.setPassword(passwordEncoder.encode(customer.getPassword()));
+        return customerRepository.save(customer);
     }
 
     public void deleteCustomerById(Long id) {
@@ -42,9 +45,9 @@ public class CustomerService {
         var customer = findByName(name);
 
         if (customer != null) {
-            //if (passwordEncoder.matches(password, customer.getPassword())) {
+            if (passwordEncoder.matches(password, customer.getPassword())) {
                 return customer;
-            //}
+            }
         }
 
         return null;

@@ -30,8 +30,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/carservice/customer/*").hasRole("ADMIN")
-                .antMatchers("/carservice/detail/*").hasRole("USER")
-                .antMatchers("/register", "/carservice/authorization").permitAll()
+                .antMatchers("/carservice/detail/update/*").hasRole("ADMIN")
+                .antMatchers("/carservice/office/update/*").hasRole("ADMIN")
+                .antMatchers("/carservice/warehouseupdate/*").hasRole("ADMIN")
+                .antMatchers("/carservice/detail/get/*").hasRole("USER")
+                .antMatchers("/carservice/office/get/*").hasRole("USER")
+                .antMatchers("/carservice/warehouse/get/*").hasRole("USER")
+                .antMatchers("/carservice/registration", "/carservice/authorization").permitAll()
                 .and()
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
     }

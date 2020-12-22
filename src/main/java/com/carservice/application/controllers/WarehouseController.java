@@ -19,29 +19,29 @@ public class WarehouseController {
         this.officeService = officeService;
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/{city}/{address}")
+    @RequestMapping(method = RequestMethod.GET, path = "/get/{city}/{address}")
     public List<Warehouse> listWarehouseByOffice(@PathVariable String city,
                                                  @PathVariable String address) {
         var office = officeService.findByCityAndAddress(city, address);
         return warehouseService.findByOffice(office.getId());
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/list")
+    @RequestMapping(method = RequestMethod.GET, path = "/get/list")
     public List<Warehouse> listWarehouse() {
         return warehouseService.findAll();
     }
 
-    @RequestMapping(method = RequestMethod.POST, path = "/")
+    @RequestMapping(method = RequestMethod.POST, path = "/update/")
     public Warehouse createOrUpdateWarehouse(@RequestBody Warehouse warehouse) {
         return warehouseService.createOrUpdateWarehouse(warehouse);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, path = "/{id}")
+    @RequestMapping(method = RequestMethod.DELETE, path = "/update/{id}")
     public void deleteWarehouse(@PathVariable Long id) {
         warehouseService.deleteWarehouseById(id);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
+    @RequestMapping(method = RequestMethod.GET, path = "/get/{id}")
     public Warehouse getWarehouse(@PathVariable Long id) {
         return warehouseService.findById(id);
     }

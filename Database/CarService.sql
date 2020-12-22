@@ -1,4 +1,4 @@
-CREATE DATABASE CarService ENCODING 'UTF-8';
+CREATE DATABASE CarService;
 
 CREATE TABLE Detail
 (
@@ -111,6 +111,6 @@ INSERT INTO Detail_Warehouse VALUES (default, 11, 24);
 INSERT INTO Detail_Warehouse VALUES (default, 12, 25);
 INSERT INTO Detail_Warehouse VALUES (default, 13, 26);
 
-INSERT INTO Customer VALUES (default, 'Alexander', '123456', 'ROLE_USER');
-INSERT INTO Customer VALUES (default, 'John', 'admin', 'ROLE_ADMIN');
+INSERT INTO Customer VALUES (default, 'Bob', '$2a$10$0QmN73QFS6gVpGh5NQubGeQrHDaUgHLGcAYwGtH187aMY4yPBzFk2', 'ROLE_USER');
+INSERT INTO Customer VALUES (default, 'Anna', '$2a$10$6h5RtvSYTgIcOJrS8abAbOhSRuPDHf7oObzPncjuaGkkNBCGpISzy', 'ROLE_ADMIN');
 
